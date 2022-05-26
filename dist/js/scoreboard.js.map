@@ -1,0 +1,1 @@
+{"version":3,"file":"scoreboard.js","names":["Scoreboard","element"],"sources":["scoreboard.js"],"sourcesContent":["class Scoreboard{\r\n    constructor(element){\r\n        this.element = element\r\n    }\r\n\r\n}"],"mappings":";;;;;;;;IAAMA,U,6BACF,oBAAYC,OAAZ,EAAoB;EAAA;;EAChB,KAAKA,OAAL,GAAeA,OAAf;AACH,C"}

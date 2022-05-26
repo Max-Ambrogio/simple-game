@@ -37,11 +37,63 @@ body {
 
 /* 2. Content ================================= */
 
+
+
+#game{
+	background: white;
+	border: 3px solid black;
+	padding: 1rem;
+}
+
+#scoreboard{
+	padding: 1rem;
+
+
+	display: flex;
+	justify-content: center;
+	.player{
+		width: 40%;
+		border: 1px solid #444;
+		padding: 2rem;
+		text-align: center;
+
+		.name{
+			font-weight: bold;
+			font-size: 20px;
+		}
+		.score{
+			font-size: 50px;
+		}
+	}
+}
+
+#gameboard{
+
+	.moves{
+		width: 100%;
+		display: flex;
+		justify-content: center;
+
+		.move{
+			width: 30%;
+			text-align: center;
+			padding: 4rem;
+			border: 1px solid black;
+		}
+	}
+
+}
+
+#round-result{
+	text-align: center;
+	margin: 2rem 0;
+}
+
 .floating-box {
 	position: relative;
 	font-family: sans-serif;
 	width: 90%;
-	max-width: 500px;
+	max-width: 1000px;
 	margin: 140px auto;
 	padding: 30px 20px 30px 30px;
 

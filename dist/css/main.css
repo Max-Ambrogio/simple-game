@@ -161,22 +161,65 @@ background: variables.$primary-color;
 }
 
 body {
-	background: #2e3032;
+	background: rgb(46, 48, 50);
 }
 
 /* 2. Content ================================= */
+#game {
+	background: white;
+	border: 3px solid black;
+	padding: 1rem;
+}
+
+#scoreboard {
+	padding: 1rem;
+	display: flex;
+	justify-content: center;
+}
+#scoreboard .player {
+	width: 40%;
+	border: 1px solid #444;
+	padding: 2rem;
+	text-align: center;
+}
+#scoreboard .player .name {
+	font-weight: bold;
+	font-size: 20px;
+}
+#scoreboard .player .score {
+	font-size: 50px;
+}
+
+#gameboard .moves {
+	width: 100%;
+	display: flex;
+	justify-content: center;
+}
+#gameboard .moves .move {
+	width: 30%;
+	text-align: center;
+	padding: 4rem;
+	border: 1px solid black;
+}
+
+#round-result {
+	text-align: center;
+	margin: 2rem 0;
+}
+
 .floating-box {
 	position: relative;
 	font-family: sans-serif;
 	width: 90%;
-	max-width: 500px;
+	max-width: 1000px;
 	margin: 140px auto;
 	padding: 30px 20px 30px 30px;
 }
 .floating-box .foreground {
 	position: relative;
 	z-index: 2;
-	transform: translateZ(100px);
+	-webkit-transform: translateZ(100px);
+	        transform: translateZ(100px);
 }
 .floating-box .background {
 	position: absolute;
@@ -187,22 +230,25 @@ body {
 	background: white;
 	z-index: 1;
 	transition: 0.2s;
-	transform: translateX(20px) perspective(600px) rotateY(15deg);
+	-webkit-transform: translateX(20px) perspective(600px) rotateY(15deg);
+	        transform: translateX(20px) perspective(600px) rotateY(15deg);
 }
 .floating-box:hover .background {
-	transform: translateX(-30px) perspective(600px) rotateY(-15deg);
+	-webkit-transform: translateX(-30px) perspective(600px) rotateY(-15deg);
+	        transform: translateX(-30px) perspective(600px) rotateY(-15deg);
 }
 .floating-box .logo {
 	position: absolute;
 	top: -30px;
 	width: 60px;
 	z-index: 2;
-	transform: translateZ(100px);
+	-webkit-transform: translateZ(100px);
+	        transform: translateZ(100px);
 	transition: 0.3s;
 }
 .floating-box .logo:hover {
-	-ms-transform: rotate(-0.4turn);
-	    transform: rotate(-0.4turn);
+	-webkit-transform: rotate(-0.4turn);
+	        transform: rotate(-0.4turn);
 }
 .floating-box h1 {
 	font-weight: 700;
