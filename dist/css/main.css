@@ -205,6 +205,18 @@ body {
 #round-result {
 	text-align: center;
 	margin: 2rem 0;
+	font-weight: bold;
+}
+
+#move-result {
+	display: flex;
+	font-weight: bold;
+	font-size: 20px;
+	justify-content: center;
+	padding: 30px;
+}
+#move-result .player-one {
+	padding-right: 40%;
 }
 
 .floating-box {

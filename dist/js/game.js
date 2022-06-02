@@ -10,6 +10,7 @@ var Game = /*#__PURE__*/_createClass(function Game(selector) {
   _classCallCheck(this, Game);
 
   this.gameEl = document.querySelector(selector);
-  this.gameBoradEl = this.gameEl.querySelector("#gameboard");
+  this.gameBoardEl = this.gameEl.querySelector("#gameboard");
+  this.scoreBoardEl = this.gameEl.querySelector("#scoreboard");
 });
 //# sourceMappingURL=game.js.map

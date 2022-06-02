@@ -12,4 +12,6 @@ class StatusMessage {
     handleStatusUpdate = (evt) => {
         this.statusEl.textContent = evt.detail.message
     }
+
+    
 }

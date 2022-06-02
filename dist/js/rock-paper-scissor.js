@@ -38,6 +38,12 @@ var RockPaperScissors = /*#__PURE__*/function (_Game) {
 
     _defineProperty(_assertThisInitialized(_this), "MOVES", ['rock', 'paper', "scissors"]);
 
+    _defineProperty(_assertThisInitialized(_this), "OUTCOMES", {
+      tie: 'tied',
+      p1: 'Player 1 won',
+      p2: 'Player 2 won'
+    });
+
     _defineProperty(_assertThisInitialized(_this), "handleMove", function (evt) {
       var btn = evt.target;
       var move = btn.dataset.move;
@@ -46,12 +52,23 @@ var RockPaperScissors = /*#__PURE__*/function (_Game) {
 
       var player2move = _this.player2.randomGuess(_this.MOVES);
 
+      var player1score = 0;
+      var player2score = 0;
       _this.latestOutcome = _this.pickWinner(player1move, player2move);
 
       _this.updateGamestatus();
+
+      _this.updateScore = _this.addPoints(player1score, player2score); // this.addPoints()
     });
 
     _defineProperty(_assertThisInitialized(_this), "pickWinner", function (p1m, p2m) {
+      var player1Guess = _this.gameBoardEl.querySelector('.player-one');
+
+      var player2Guess = _this.gameBoardEl.querySelector('.player-two');
+
+      player1Guess.innerText = "player one chose: " + p1m;
+      player2Guess.innerText = "player two chose: " + p2m;
+      console.log('player guess:', p1m, p2m);
       var outcome = '';
 
       if (p1m == p2m) {
@@ -82,7 +99,47 @@ var RockPaperScissors = /*#__PURE__*/function (_Game) {
       return outcome;
     });
 
-    _defineProperty(_assertThisInitialized(_this), "updateGamestatus", function () {});
+    _defineProperty(_assertThisInitialized(_this), "addPoints", function () {
+      //select player 1 score 
+      //select player 2 score
+      //check who won the round
+      //if player 1 wins, add point for player 1 win update player 1 score 
+      //if player 2 wins, add point for player 2 win update player 2 score 
+      //tie = no points 
+      //when the game reaches 5 points = game over 
+      //game over = resets game
+      var p1Score = _this.scoreBoardEl.querySelector('#player1 .score');
+
+      console.log(p1Score);
+
+      var p2Score = _this.scoreBoardEl.querySelector('#player2 .score');
+
+      console.log(p2Score);
+      var winner = _this.OUTCOMES[_this.latestOutcome];
+      console.log(winner);
+
+      if (winner == "tie") {//do nothing
+      } else {
+        if (winner == "Player 1 won") {
+          p1Score.textContent++;
+        } else if (winner == "Player 2 won") {
+          p2Score.textContent++;
+        }
+      }
+
+      return;
+    });
+
+    _defineProperty(_assertThisInitialized(_this), "updateGamestatus", function () {
+      // const score = 
+      var message = _this.OUTCOMES[_this.latestOutcome];
+      var evt = new CustomEvent('game-status', {
+        detail: {
+          message: message
+        }
+      });
+      document.dispatchEvent(evt);
+    });
 
     _this.setup();
 
@@ -94,14 +151,15 @@ var RockPaperScissors = /*#__PURE__*/function (_Game) {
     value: function setup() {
       var _this2 = this;
 
-      var btns = this.gameBoradEl.querySelectorAll(".move button");
+      var btns = this.gameBoardEl.querySelectorAll(".move button");
       btns.forEach(function (btn) {
         btn.addEventListener("click", _this2.handleMove);
       });
       this.player1 = new Player("me");
       this.player2 = new Player("computer");
-      var resultsEl = this.gameBoradEl.querySelector('#round-result');
-      new StatusMessage(resultsEl);
+      var resultsEl = this.gameBoardEl.querySelector('#round-result');
+      new StatusMessage(resultsEl); // const scoreboardEl = this.scoreBoardEl.querySelector('scoreboard')
+      // new StatusMessage(resultsEl)
     }
   }]);
 
